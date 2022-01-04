@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ConexionService {
-  url="http://localhost:8000";
+  url="http://34.133.75.235:80";
 
   constructor(private http: HttpClient) { }
 
