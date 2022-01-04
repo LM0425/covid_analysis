@@ -12,3 +12,101 @@
     text-align: center;
   }
   
+ /*  mat-form-field {
+    width: 100%;
+  } */
+  .example-card {
+    max-width: 400px;
+  }
+
+  .example-header-image {
+    background-image: url('https://i.pinimg.com/550x/c9/ff/dd/c9ffdd61e8d63561d18ed89d2a6f0a94.jpg');
+    background-size: cover;
+  }
+
+  
+  .file-select {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .file-select::before {
+    background-color: #5678EF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar'; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;
+  }
+  
+  #src-file1::before {
+    content: 'Seleccionar Archivo 1';
+  }
+  
+  #src-file2::before {
+    content: 'Seleccionar Archivo 2';
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+p {
+    margin: 1em;
+}
+
+.cols {
+    height: 300px;
+}
+    .col1 {
+        
+        width: 50%;
+    }
+    .col2 {
+        
+        width: 49%;
+    }
+    .col1,
+    .col2 {
+        display: inline-block;
+        height: 100%;
+        text-align: center;
+    }
+
+    .padre {
+      background-color: #fafafa;
+      margin: 1rem;
+      padding: 1rem;
+      border: 2px solid #ccc;
+      /* IMPORTANTE */
+      text-align: center;
+    }
+
+
+    .padre {
+      /* IMPORTANTE */
+      text-align: center;
+    }
+    
+    .hijo {
+      
+      padding: 10px;
+      margin: 10px;
+      
+      /* IMPORTANTE */
+      display: inline-block;
+    }

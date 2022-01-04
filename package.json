@@ -26,6 +26,7 @@
     "express": "^4.17.2",
     "ngx-csv-parser": "^0.0.7",
     "path": "^0.12.7",
+    "pdfmake": "^0.2.4",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "typescript": "~4.5.2",

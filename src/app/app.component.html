@@ -7,11 +7,173 @@
   </mat-toolbar-row>
 
 </mat-toolbar>
-
-
-
-<div class="csv-file-chooser-section">
+<!--<div class="csv-file-chooser-section">
   <input type="file" #fileImportInput name="File Upload" id="csvFileUpload" (change)="fileChangeListener($event)"
     accept=".csv" />
+</div>-->
+<form>
+      
+  <!--style="width: 100%;" -->
+  <mat-form-field style="width: 100%;"appearance="fill">
+    <mat-label>Seleccione un reporte</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="food"  >
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+<br><br>
+<div class="padre">
+  
+  <form *ngIf="selectedValue==='1' || selectedValue==='2' || selectedValue==='3' || selectedValue==='4'|| selectedValue==='5'|| selectedValue==='6'">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Columna a comparar</mat-label>
+      <mat-select [(ngModel)]="columnaFiltrar" name="columnaFiltrar"  >
+        <mat-option *ngFor="let etiqueta of etiquetas" [value]="etiqueta">
+          {{etiqueta}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Valor a buscar</mat-label>
+    <input [(ngModel)]="valorFiltrar" name="valorFiltrar"  type="text" matInput placeholder="Predecir">
+  </mat-form-field>
+  
+  <br>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>eje X</mat-label>
+      <mat-select [(ngModel)]="selectX" name="etiqueta"  >
+        <mat-option *ngFor="let etiqueta of etiquetas" [value]="etiqueta">
+          {{etiqueta}}
+        </mat-option>
+      </mat-select><br>
+      <mat-checkbox class="example-margin" name="checked" [(ngModel)]="checked">Es fecha</mat-checkbox> 
+      
+    </mat-form-field>
+     
+    
+  <br>
+    <mat-form-field appearance="fill">
+      <mat-label>eje Y</mat-label>
+      <mat-select [(ngModel)]="selectY" name="etiqueta"  >
+        <mat-option *ngFor="let etiqueta of etiquetas" [value]="etiqueta">
+          {{etiqueta}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field *ngIf="selectedValue=='2'" appearance="fill">
+      <mat-label>Predecir a:</mat-label>
+      <input [(ngModel)]="predecir" name="predecir"  type="number" matInput placeholder="Predecir">
+    </mat-form-field>
+    <br>
+    <mat-form-field  appearance="fill">
+      <mat-label>Seleccione un tipo de regresion</mat-label>
+      <mat-select [(ngModel)]="regresionSelected" name="food"  >
+        <mat-option *ngFor="let food of regresiones" [value]="food.value">
+          {{food.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field *ngIf="regresionSelected==='2'" appearance="fill">
+      <mat-label>Grado a:</mat-label>
+      <input [(ngModel)]="grado" name="grado"  type="number" matInput placeholder="Grado">
+    </mat-form-field>
+  <br>
+    <button mat-raised-button (click)="enviarData()" color="primary">Solicitar</button>
+    <br>
+    <mat-form-field *ngIf="selectedValue==='3'" appearance="fill">
+      <mat-label>Valor a comparar</mat-label>
+      <input [(ngModel)]="selectYcomparar" name="valorFiltrar2"  type="text" matInput placeholder="Predecir">
+    </mat-form-field>
+    <br>
+    <button *ngIf="selectedValue==='3'"  mat-raised-button (click)="enviarDataComparar()" color="primary">Obtener Comparacion</button>
+  </form>
 </div>
+<!--
+<div class="cols">
+  <div class="col1">
+    
+  </div>
+  <div class="col2">
+    
+    
+
+  </div>
+</div>
+-->
+
+
+
+<div class="padre">
+  <div class="hijo"><div class="file-select" id="src-file1" >
+    <input type="file" #fileImportInput  name="src-file1" aria-label="Archivo" (change)="fileChangeListener($event)"
+    accept=".csv" >
+  </div></div>
+  <div class="hijo">
+   
+</div>
+  <div class="hijo">
+    <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{titoloCarta}}</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="grafica" alt="">
+    <mat-card-content>
+      <p *ngIf="selectedValue=='2' || selectedValue=='3'">
+           La prediccion es {{resultado}}
+      </p>
+      <p *ngIf="selectedValue=='4'">
+          El porcentaje es {{porcentaje}}
+      </p>
+      <p *ngIf="selectedValue=='5'">
+        El promedio es {{promedio}}
+      </p>
+      <p *ngIf="selectedValue=='6'">
+        La tasa es {{formulaLineal}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button *ngIf="selectedValue!='3'" (click)="openPdfStyle()" mat-button>Descargar Reporte</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card *ngIf="selectedValue=='3'" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Comparacion</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="grafica2" alt="">
+    <mat-card-content>
+      <p>
+           La prediccion es {{resultado2}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button  (click)="openPdfStyleComparar()" mat-button>Descargar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</div>
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
 
