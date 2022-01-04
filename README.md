@@ -1,6 +1,6 @@
 # CovidAnalysis
 
-#Manual de usuario
+# Manual de usuario
 
 El programa de Data Analysis Covid cuenta con una pantalla inicial en la cual se puede cargar un archivo de tipo CSV para poder realizar del analisis correspondiente en base a 25 tipos de reportes.
 
@@ -8,7 +8,7 @@ El programa de Data Analysis Covid cuenta con una pantalla inicial en la cual se
 [![Image from Gyazo](https://i.gyazo.com/abff707e2d9c82abef5d26f7e930d5a7.png)](https://gyazo.com/abff707e2d9c82abef5d26f7e930d5a7)
 
 
-###Listado de reportes
+### Listado de reportes
 
 - Tendencia de la infección por Covid-19 en un País.
 - Predicción de Infertados en un País.- 
